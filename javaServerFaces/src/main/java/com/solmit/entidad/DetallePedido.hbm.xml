@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30/10/2016 03:08:55 AM by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="edu.tecsup.javaweb.dao.DetallePedido" table="detalle_pedido" catalog="tienda" optimistic-lock="version">
+        <composite-id name="id" class="edu.tecsup.javaweb.dao.DetallePedidoId">
+            <key-property name="idDetallePedido" type="int">
+                <column name="id_detalle_pedido" />
+            </key-property>
+            <key-property name="idPedido" type="int">
+                <column name="id_pedido" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="pedido" class="edu.tecsup.javaweb.dao.Pedido" update="false" insert="false" fetch="select">
+            <column name="id_pedido" not-null="true" />
+        </many-to-one>
+        <many-to-one name="producto" class="edu.tecsup.javaweb.dao.Producto" fetch="select">
+            <column name="id_producto" not-null="true" />
+        </many-to-one>
+        <property name="precio" type="java.lang.Double">
+            <column name="precio" precision="22" scale="0" />
+        </property>
+        <property name="cantidad" type="java.lang.Integer">
+            <column name="cantidad" />
+        </property>
+    </class>
+</hibernate-mapping>

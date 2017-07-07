@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30/10/2016 03:08:55 AM by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="edu.tecsup.javaweb.dao.Rol" table="rol" catalog="tienda" optimistic-lock="version">
+        <id name="rolNombre" type="string">
+            <column name="rol_nombre" length="20" />
+            <generator class="assigned" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="64" />
+        </property>
+        <set name="usuarioRols" table="usuario_rol" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="rol_nombre" length="20" not-null="true" />
+            </key>
+            <one-to-many class="edu.tecsup.javaweb.dao.UsuarioRol" />
+        </set>
+    </class>
+</hibernate-mapping>

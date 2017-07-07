@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/05/2017 03:35:17 PM by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="com.solmit.java.entidad.UsuarioRol" table="usuario_rol" catalog="tienda">
+        <composite-id name="id" class="com.solmit.java.entidad.UsuarioRolId">
+            <key-property name="rolNombre" type="string">
+                <column name="rol_nombre" length="20" />
+            </key-property>
+            <key-property name="idUsuario" type="string">
+                <column name="id_usuario" length="20" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="rol" class="com.solmit.java.entidad.Rol" update="false" insert="false" fetch="select">
+            <column name="rol_nombre" length="20" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="com.solmit.java.entidad.Usuario" update="false" insert="false" fetch="select">
+            <column name="id_usuario" length="20" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

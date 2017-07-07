@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30/10/2016 03:08:55 AM by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="edu.tecsup.javaweb.dao.Producto" table="producto" catalog="tienda" optimistic-lock="version">
+        <id name="idProducto" type="java.lang.Integer">
+            <column name="id_producto" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="categoria" class="edu.tecsup.javaweb.dao.Categoria" fetch="select">
+            <column name="id_categoria" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="128" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="256" />
+        </property>
+        <property name="precio" type="java.lang.Long">
+            <column name="precio" precision="10" scale="0" />
+        </property>
+        <property name="stock" type="java.lang.Integer">
+            <column name="stock" />
+        </property>
+        <property name="importancia" type="java.lang.Integer">
+            <column name="importancia" />
+        </property>
+        <property name="imagen" type="string">
+            <column name="imagen" length="20" />
+        </property>
+        <set name="detallePedidos" table="detalle_pedido" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_producto" not-null="true" />
+            </key>
+            <one-to-many class="edu.tecsup.javaweb.dao.DetallePedido" />
+        </set>
+    </class>
+</hibernate-mapping>

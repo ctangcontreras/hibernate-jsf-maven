@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+</h:head>
+
+<h:body>
+
+	<h4>Crear nuevo user</h4>
+
+	<h:form >
+
+		<p:outputPanel id="newUser" layout="block">
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel for="idUser" value="Id: " />
+				<h:inputText id="idUser" value="#{usuarioMb.newUser.idUsuario}" />
+
+				<h:outputLabel for="idNombre" value="Nombre: " />
+				<h:inputText id="idNombre" value="#{usuarioMb.newUser.nombres}" />
+
+				<h:outputLabel for="apePa" value="Apellido Paterno: " />
+				<h:inputText id="apePa" value="#{usuarioMb.newUser.paterno}" />
+
+				<h:outputLabel for="apeMa" value="Apellido Materno: " />
+				<h:inputText id="apeMa" value="#{usuarioMb.newUser.materno}" />
+
+				<p:commandButton value="Confirmar" action="#{usuarioMb.crear(usuarioMb.newUser)}" >	</p:commandButton>
+				<p:commandButton value="Regresar" action="#{usuarioMb.regresar}" >	</p:commandButton>
+				
+			</h:panelGrid>
+
+		</p:outputPanel>
+	</h:form>
+
+</h:body>
+</html>
